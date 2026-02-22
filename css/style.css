@@ -347,8 +347,10 @@ ul {
 }
 
 .card:hover {
-    border-color: var(--border-light);
+    border-color: rgba(59, 130, 246, 0.15);
     background: var(--bg-glass-hover);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08),
+        0 0 0 1px rgba(59, 130, 246, 0.06);
 }
 
 /* =========================================================================
@@ -357,8 +359,19 @@ ul {
 footer {
     padding: 80px 0 40px;
     border-top: 1px solid var(--border-light);
-    background: var(--bg-secondary);
+    background: linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));
     text-align: center;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
 }
 
 .social-links {
@@ -463,4 +476,83 @@ footer {
 .tilt-card {
     will-change: transform;
     transform-style: preserve-3d;
+}
+
+/* =========================================================================
+   HERO SECTION (moved from inline styles)
+   ========================================================================= */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--nav-height);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* =========================================================================
+   EPISODE CARD IMAGE OVERLAY
+   ========================================================================= */
+.episode-card .img-wrap {
+    position: relative;
+}
+
+.episode-card .img-wrap::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(180deg, transparent, var(--bg-glass));
+    pointer-events: none;
+}
+
+/* =========================================================================
+   SECTION DIVIDER
+   ========================================================================= */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+    margin: 0;
+    border: none;
+}
+
+/* =========================================================================
+   GUEST CARD AVATAR RING PULSE
+   ========================================================================= */
+.guest-card:hover {
+    transform: translateY(-6px);
+}
+
+/* =========================================================================
+   SOCIAL LINK TOOLTIP
+   ========================================================================= */
+.social-link {
+    position: relative;
+}
+
+.social-link::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-link:hover::after {
+    opacity: 1;
 }

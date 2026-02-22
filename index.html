@@ -98,23 +98,12 @@
 
   <!-- Main Content -->
   <main>
-    <!-- Hero Section -->
-    <header class="hero-section" style="
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-          padding-top: var(--nav-height);
-        ">
+    <header class="hero-section">
       <!-- Ambient Shape Backgrounds for Parallax -->
       <div class="bg-shape shape-1 parallax-mouse" data-speed="-15"></div>
       <div class="bg-shape shape-2 parallax-mouse" data-speed="25"></div>
 
-      <div class="container relative z-10 hero-content reveal reveal-up">
+      <div class="container hero-content reveal reveal-up">
         <h1 class="hero-title masked">ПОДКАСТ<br />БЕЗ ТАЙН</h1>
         <p class="hero-subtitle reveal reveal-up reveal-delay-1">
           Разбираем сложные темы простым языком, зовем крутых экспертов и смело
@@ -227,12 +216,13 @@
       <h2 style="font-size: 2rem; margin-bottom: 2rem">
         Смотрите и слушайте нас:
       </h2>
-      <div class="social-links magnetic-wrap">
-        <a href="https://www.youtube.com/@knamss" class="social-link" target="_blank" rel="noopener noreferrer">YT</a>
-        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">ВК</a>
-        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">Дз</a>
-        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">RT</a>
-        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">ЯМ</a>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@knamss" class="social-link" target="_blank" rel="noopener noreferrer"
+          data-label="YouTube">YT</a>
+        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" data-label="ВКонтакте">ВК</a>
+        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" data-label="Дзен">Дз</a>
+        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" data-label="Rutube">RT</a>
+        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" data-label="Я.Музыка">ЯМ</a>
       </div>
       <p style="color: var(--text-muted); font-size: 0.9rem">
         &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
