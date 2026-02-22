@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO: Имя гостя и тема обязательно должны быть в Title -->
+    <title>Имя Гостя - Тема Выпуска | Подкаст К.Н.А.М.С.С.</title>
+    <!-- SEO: Описание со всеми ключевыми словами для поисковиков -->
+    <meta name="description"
+        content="Полный разбор темы X от эксперта Имя Фамилия. Узнайте все о современных методах лечения стоматологических проблем в подкасте КНАМСС.">
+
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --accent-color: #0ea5e9;
+            --accent-hover: #0284c7;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --border-radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding: 15px 40px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #0f172a;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .episode-header {
+            margin-bottom: 40px;
+        }
+
+        .episode-tag {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            color: #0f172a;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Блок с Информацией о госте */
+        .guest-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .guest-photo {
+            width: 100px;
+            height: 100px;
+            background-color: var(--bg-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .guest-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .guest-info p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        /* SEO Текст - Расшифровка */
+        .transcript {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            margin-bottom: 50px;
+        }
+
+        .transcript h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .timecode {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .transcript-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .transcript-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Призыв к действию (Запись к врачам) */
+        .cta-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #bae6fd;
+            margin-bottom: 50px;
+        }
+
+        .cta-section h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #0369a1;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3);
+            margin-top: 20px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .guest-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .transcript {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🎙️ К.Н.А.М.С.С.</a>
+        <a href="episodes.html" style="margin-left: auto; font-weight: 600;">Все выпуски</a>
+    </nav>
+
+    <main class="container">
+        <!-- Заголовок выпуска -->
+        <div class="episode-header">
+            <span class="episode-tag">Выпуск #12</span>
+            <h1>Название скандальной или полезной темы выпуска</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Опубликовано: 15 Марта 2026</p>
+        </div>
+
+        <!-- Видео плеер -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Podcast Video" allowfullscreen></iframe>
+        </div>
+
+        <!-- SEO Карточка гостя (Поисковики любят чёткую структуру) -->
+        <div class="guest-card">
+            <div class="guest-photo"></div>
+            <div class="guest-info">
+                <h3>В гостях: Имя Фамилия Гостя</h3>
+                <p>Доктор медицинских наук, владелец клиники "СуперЗуб". Разбираем с ним самые частые ошибки пациентов
+                    при выборе клиники и как избежать обмана.</p>
+            </div>
+        </div>
+
+        <!-- БЛОК КОНВЕРСИИ ТРАФИКА (Для чего все затевалось) -->
+        <div class="cta-section">
+            <h2>Понравился подход наших ведущих?</h2>
+            <p>Анастасия Маркова, София Сапрыкина и Константин Наам принимают пациентов в своих клиниках. Доверьте свою
+                улыбку профессионалам.</p>
+            <a href="index.html#latest" class="btn-primary">Сайты и запись к ведущим →</a>
+        </div>
+
+        <!-- SEO ТЕКСТ (Таймкоды и выжимка для Яндекса) -->
+        <div class="transcript">
+            <h2>О чем выпуск:</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Ниже представлены главные темы, которые мы
+                обсудили в этом выпуске.</p>
+
+            <div class="transcript-item">
+                <span class="timecode">02:15</span>
+                <strong>Мифы об имплантации зубов</strong>
+                <p>Константин Наам рассказывает, почему современные протоколы All-on-4 позволяют вставить зубы за один
+                    день без боли и отеков. Гость делится историей своей практики.</p>
+            </div>
+
+            <div class="transcript-item">
+                <span class="timecode">15:30</span>
+                <strong>Как выбрать брекеты в 2026 году?</strong>
+                <p>Анастасия Маркова объясняет разницу между элайнерами и металлическими брекетами. Почему эстетика не
+                    всегда означает качество лечения.</p>
+            </div>
+
+            <div class="transcript-item">
+                <span class="timecode">32:45</span>
+                <strong>Здоровье десен — фундамент зубов</strong>
+                <p>София Сапрыкина о том, как скрытый пародонтит сводит на нет работу хирургов и ортодонтов.
+                    Профилактика и домашний уход.</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

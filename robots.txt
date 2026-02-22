@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://knamss.github.io/knamss-website/sitemap.xml

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все выпуски | Подкаст стоматологов К.Н.А.М.С.С.</title>
+    <meta name="description"
+        content="Полный архив выпусков подкаста КНАМСС. Интервью со стоматологами, разбор клинических случаев, советы пациентам и честные разговоры о медицине.">
+
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --accent-color: #0ea5e9;
+            --accent-hover: #0284c7;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding: 15px 40px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #0f172a;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .episode-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .episode-thumb {
+            width: 100%;
+            height: 180px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #94a3b8;
+        }
+
+        .episode-content {
+            padding: 25px;
+        }
+
+        .episode-num {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .episode-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            color: #0f172a;
+        }
+
+        .episode-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn-read {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .btn-read:hover {
+            color: var(--accent-hover);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🎙️ К.Н.А.М.С.С.</a>
+    </nav>
+
+    <main class="container">
+        <h1>Каталог выпусков</h1>
+
+        <div class="episodes-grid">
+            <!-- Выпуск 1 -->
+            <div class="episode-card">
+                <div class="episode-thumb">Обложка видео</div>
+                <div class="episode-content">
+                    <span class="episode-num">ВЫПУСК #3</span>
+                    <h3 class="episode-title">Имя Гостя - Тема Выпуска</h3>
+                    <p class="episode-desc">Короткое описание того, о чем говорили в выпуске. Пара предложений для
+                        привлечения внимания.</p>
+                    <a href="episode-template.html" class="btn-read">Смотреть и читать →</a>
+                </div>
+            </div>
+
+            <!-- Выпуск 2 -->
+            <div class="episode-card">
+                <div class="episode-thumb">Обложка видео</div>
+                <div class="episode-content">
+                    <span class="episode-num">ВЫПУСК #2</span>
+                    <h3 class="episode-title">Второй Гость - Скандалы в медицине</h3>
+                    <p class="episode-desc">Разбираем юридические аспекты работы клиник и почему пациенты часто бывают
+                        неправы.</p>
+                    <a href="episode-template.html" class="btn-read">Смотреть и читать →</a>
+                </div>
+            </div>
+
+            <!-- Выпуск 3 -->
+            <div class="episode-card">
+                <div class="episode-thumb">Обложка видео</div>
+                <div class="episode-content">
+                    <span class="episode-num">ВЫПУСК #1</span>
+                    <h3 class="episode-title">Знакомство с ведущими</h3>
+                    <p class="episode-desc">Анастасия, София и Константин рассказывают о себе, своем пути в медицину и
+                        философии подкаста.</p>
+                    <a href="episode-template.html" class="btn-read">Смотреть и читать →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
