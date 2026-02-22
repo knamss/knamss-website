@@ -56,7 +56,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior handled by Lenis JS for smoother inertia */
     font-size: 16px;
 }
 

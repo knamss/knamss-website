@@ -1,4 +1,88 @@
 /* =========================================================================
+   PRELOADER (Glassmorphism)
+   ========================================================================= */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1),
+    visibility 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.preloader-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  animation: preloaderPulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.preloader-bar {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  border-radius: 2px;
+  position: relative;
+}
+
+.preloader-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  animation: preloaderSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes preloaderPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes preloaderSlide {
+  0% {
+    left: -60%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+/* =========================================================================
    CUSTOM CURSOR
    ========================================================================= */
 .cursor-dot,
@@ -10,33 +94,58 @@
   border-radius: 50%;
   z-index: 9999;
   pointer-events: none;
-  /* Let clicks pass through */
 }
 
 .cursor-dot {
   width: 8px;
   height: 8px;
   background-color: var(--text-primary);
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease;
 }
 
 .cursor-outline {
   width: 40px;
   height: 40px;
-  border: 1px solid var(--text-secondary);
-  transition:
-    width 0.2s,
-    height 0.2s,
-    background-color 0.2s,
-    border-color 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    height 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cursor text label (via data-cursor-text attribute) */
+.cursor-outline::after {
+  content: attr(data-cursor-text);
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 /* Hover States for Cursor */
+.cursor-hover .cursor-dot {
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
 .cursor-hover .cursor-outline {
-  width: 60px;
-  height: 60px;
-  border-color: var(--accent-primary);
-  background-color: rgba(59, 130, 246, 0.1);
-  backdrop-filter: blur(2px);
+  width: 64px;
+  height: 64px;
+  border-color: transparent;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.cursor-outline.has-text::after {
+  opacity: 1;
 }
 
 /* Hide custom cursor on touch devices */
@@ -44,38 +153,41 @@
 
   .cursor-dot,
   .cursor-outline {
-    display: none;
+    display: none !important;
   }
 }
 
 /* =========================================================================
-   SCROLL REVEAL ANIMATIONS (Triggered by IntersectionObserver/GSAP)
+   SCROLL REVEAL ANIMATIONS
    ========================================================================= */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 1s cubic-bezier(0.25, 1, 0.5, 1),
-    transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: opacity, transform;
 }
 
 .reveal.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) !important;
 }
 
-/* Reveal Delays for Grids */
+/* Staggered reveal delays */
 .reveal-delay-1 {
-  transition-delay: 0.1s;
+  transition-delay: 0.15s;
 }
 
 .reveal-delay-2 {
-  transition-delay: 0.2s;
+  transition-delay: 0.3s;
 }
 
 .reveal-delay-3 {
-  transition-delay: 0.3s;
+  transition-delay: 0.45s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.6s;
 }
 
 /* =========================================================================
@@ -102,13 +214,13 @@
 }
 
 main {
-  animation: fadeInPage 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: fadeInPage 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes fadeInPage {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
 
   100% {
@@ -129,7 +241,6 @@ main {
 .parallax-img {
   width: 100%;
   height: 120%;
-  /* Taller than container for parallax room */
   object-fit: cover;
   will-change: transform;
 }
@@ -140,7 +251,7 @@ main {
 }
 
 .img-hover-zoom img {
-  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .img-hover-zoom:hover img {
@@ -153,7 +264,7 @@ main {
   filter: blur(100px);
   border-radius: 50%;
   z-index: -1;
-  opacity: 0.4;
+  opacity: 0.35;
   will-change: transform;
 }
 
@@ -171,24 +282,36 @@ main {
   width: 600px;
   height: 600px;
   background: #8b5cf6;
-  /* Purple glow */
 }
 
-/* -------------------------------------------------------------------------- */
-/* HORIZONTAL SCROLL GALLERY & TEXT MASKING                                   */
-/* -------------------------------------------------------------------------- */
+/* =========================================================================
+   HORIZONTAL SCROLL GALLERY & TEXT MASKING
+   ========================================================================= */
+.hero-title {
+  font-size: clamp(4rem, 10vw, 8rem);
+  margin-bottom: 1rem;
+  line-height: 1;
+  font-weight: 800;
+}
 
 .hero-title.masked {
   background: linear-gradient(135deg, var(--accent-primary), #8b5cf6, #ec4899, var(--accent-primary));
   background-size: 300% 300%;
-  animation: gradientBG 8s ease infinite;
+  animation: gradientShift 8s ease infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-@keyframes gradientBG {
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  color: var(--text-secondary);
+}
+
+@keyframes gradientShift {
   0% {
     background-position: 0% 50%;
   }
@@ -205,7 +328,7 @@ main {
 .horizontal-scroll-container {
   min-height: 100vh;
   position: relative;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-primary);
 }
 
 .sticky-wrapper {
@@ -236,20 +359,27 @@ main {
   width: 350px;
   height: 450px;
   background: var(--bg-glass);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s ease;
+}
+
+.hz-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .hz-card img {
   width: 100%;
   height: 60%;
   object-fit: cover;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .hz-card-content {
@@ -263,9 +393,75 @@ main {
 .hz-card-content h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
 .hz-card-content p {
   color: var(--text-secondary);
   font-size: 0.9rem;
+}
+
+/* =========================================================================
+   FILTER BUTTON ACTIVE STATE
+   ========================================================================= */
+.filter-btn.active {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+/* =========================================================================
+   ACCESSIBILITY: Reduced Motion
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .preloader {
+    display: none !important;
+  }
+
+  .hero-title.masked {
+    animation: none;
+  }
+}
+
+/* =========================================================================
+   RESPONSIVE: Horizontal Scroll
+   ========================================================================= */
+@media (max-width: 768px) {
+  .hz-card {
+    width: 280px;
+    height: 380px;
+  }
+
+  .horizontal-scroll-container {
+    min-height: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sticky-wrapper {
+    position: relative;
+    height: auto;
+    width: auto;
+    overflow: visible;
+  }
+
+  .cards-track {
+    padding: 2rem 5vw;
+  }
 }

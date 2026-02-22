@@ -1,5 +1,5 @@
 /**
- * animations.js - Scroll Reveals and Magnetic Interactions
+ * animations.js - Scroll Reveals, Magnetic Interactions, Horizontal Scroll, 3D Tilt, Filters
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,12 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
    ========================================================================= */
 function initScrollReveals() {
   const revealElements = document.querySelectorAll(".reveal");
-
   if (revealElements.length === 0) return;
 
   const observerOptions = {
     root: null,
-    rootMargin: "0px 0px -10% 0px", // Trigger slightly before it comes into view
+    rootMargin: "0px 0px -8% 0px",
     threshold: 0.1,
   };
 
@@ -29,7 +28,6 @@ function initScrollReveals() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("active");
-        // Stop observing once revealed
         observer.unobserve(entry.target);
       }
     });
@@ -58,23 +56,17 @@ function initMagneticButtons() {
         y: rect.top + rect.height / 2,
       };
 
-      // Calculate distance from center
-      const x = (e.clientX - center.x) * 0.4; // Magnetic strength X
-      const y = (e.clientY - center.y) * 0.4; // Magnetic strength Y
+      const x = (e.clientX - center.x) * 0.35;
+      const y = (e.clientY - center.y) * 0.35;
 
-      // Animate button
       btn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+    }, { passive: true });
 
     wrap.addEventListener("mouseleave", () => {
-      // Reset button to center smoothly
       btn.style.transform = "translate(0px, 0px)";
       btn.style.transition = "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)";
 
-      // Remove transition after it finished so hover effect feels instant next time
-      setTimeout(() => {
-        btn.style.transition = "";
-      }, 500);
+      setTimeout(() => { btn.style.transition = ""; }, 500);
     });
   });
 }
@@ -87,6 +79,7 @@ function initParallax() {
 
   if (
     window.matchMedia("(pointer: coarse)").matches ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
     parallaxElements.length === 0
   )
     return;
@@ -97,22 +90,20 @@ function initParallax() {
   let targetY = 0;
 
   window.addEventListener("mousemove", (e) => {
-    // Normalize mouse pos (-1 to 1) based on screen center
     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-  });
+  }, { passive: true });
 
   const animateParallax = () => {
-    // Ease the target values
     targetX += (mouseX - targetX) * 0.05;
     targetY += (mouseY - targetY) * 0.05;
 
     parallaxElements.forEach((el) => {
-      const speed = el.getAttribute("data-speed") || 20;
+      const speed = parseFloat(el.getAttribute("data-speed")) || 20;
       const x = targetX * speed;
       const y = targetY * speed;
 
-      el.style.transform = `translate(${x}px, ${y}px)`;
+      el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     });
 
     requestAnimationFrame(animateParallax);
@@ -126,47 +117,55 @@ function initParallax() {
    ========================================================================= */
 function initHorizontalScroll() {
   const container = document.querySelector(".horizontal-scroll-container");
-  const stickyWrapper = document.querySelector(".sticky-wrapper");
   const track = document.querySelector(".cards-track");
 
-  if (!container || !stickyWrapper || !track) return;
+  if (!container || !track) return;
+
+  // On mobile, allow native horizontal scroll instead
+  if (window.innerWidth < 769) return;
 
   const setupHeight = () => {
-    // Determine how far we need to scroll horizontally
-    // Add that distance to the vertical viewport height to give scroll space
     const trackWidth = track.scrollWidth;
-    const scrollableDistance = trackWidth - window.innerWidth + window.innerWidth * 0.1; // Add 10vw padding
-    container.style.height = `${window.innerHeight + scrollableDistance}px`;
+    const scrollableDistance = trackWidth - window.innerWidth + window.innerWidth * 0.1;
+    container.style.height = `${window.innerHeight + Math.max(0, scrollableDistance)}px`;
   };
 
   setupHeight();
-  window.addEventListener("resize", setupHeight);
 
-  // Use Lenis or native scroll event
-  window.addEventListener(
-    "scroll",
-    () => {
-      const rect = container.getBoundingClientRect();
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(setupHeight, 150);
+  });
 
-      // When the top of container hits top of viewport, sticky wrapper stays.
-      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-        const maxScroll = container.offsetHeight - window.innerHeight;
-        const currentScroll = -rect.top;
-        const progress = currentScroll / maxScroll;
+  let scrollTicking = false;
 
-        const trackWidth = track.scrollWidth;
-        const moveDistance = trackWidth - window.innerWidth + window.innerWidth * 0.1;
+  window.addEventListener("scroll", () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        const rect = container.getBoundingClientRect();
 
-        track.style.transform = `translate3d(${-moveDistance * progress}px, 0, 0)`;
-      } else if (rect.top > 0) {
-        track.style.transform = `translate3d(0, 0, 0)`;
-      } else {
-        const moveDistance = track.scrollWidth - window.innerWidth + window.innerWidth * 0.1;
-        track.style.transform = `translate3d(${-moveDistance}px, 0, 0)`;
-      }
-    },
-    { passive: true },
-  );
+        if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+          const maxScroll = container.offsetHeight - window.innerHeight;
+          const currentScroll = -rect.top;
+          const progress = Math.min(1, Math.max(0, currentScroll / maxScroll));
+
+          const trackWidth = track.scrollWidth;
+          const moveDistance = trackWidth - window.innerWidth + window.innerWidth * 0.1;
+
+          track.style.transform = `translate3d(${-moveDistance * progress}px, 0, 0)`;
+        } else if (rect.top > 0) {
+          track.style.transform = `translate3d(0, 0, 0)`;
+        } else {
+          const moveDistance = track.scrollWidth - window.innerWidth + window.innerWidth * 0.1;
+          track.style.transform = `translate3d(${-moveDistance}px, 0, 0)`;
+        }
+
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
 }
 
 /* =========================================================================
@@ -175,30 +174,33 @@ function initHorizontalScroll() {
 function init3DTilt() {
   const tiltCards = document.querySelectorAll(".tilt-card");
 
-  if (window.matchMedia("(pointer: coarse)").matches) return;
+  if (
+    window.matchMedia("(pointer: coarse)").matches ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  )
+    return;
 
   tiltCards.forEach((card) => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left; // x position within the element
-      const y = e.clientY - rect.top; // y position within the element
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      // Max rotation 15 degrees
-      const rotateX = ((y - centerY) / centerY) * -15;
-      const rotateY = ((x - centerX) / centerX) * 15;
+      // Max rotation 12 degrees (slightly less = more elegant)
+      const rotateX = ((y - centerY) / centerY) * -12;
+      const rotateY = ((x - centerX) / centerX) * 12;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    }, { passive: true });
 
     card.addEventListener("mouseleave", () => {
-      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-      card.style.transition = "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)";
-      setTimeout(() => {
-        card.style.transition = "";
-      }, 500);
+      card.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+      card.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+
+      setTimeout(() => { card.style.transition = ""; }, 600);
     });
   });
 }
@@ -214,9 +216,8 @@ function initFilters() {
 
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // Remove active class from all
+      // Toggle active class
       filterBtns.forEach((b) => b.classList.remove("active"));
-      // Add active to clicked
       btn.classList.add("active");
 
       const filterValue = btn.getAttribute("data-filter");
@@ -224,23 +225,22 @@ function initFilters() {
       items.forEach((item) => {
         const category = item.getAttribute("data-category");
 
-        // Scale down animation
-        item.style.transition = "transform 0.4s ease, opacity 0.4s ease";
-        item.style.transform = "scale(0.8)";
+        // Animate out
+        item.style.transition = "transform 0.35s ease, opacity 0.35s ease";
+        item.style.transform = "scale(0.85)";
         item.style.opacity = "0";
 
         setTimeout(() => {
           if (filterValue === "all" || category === filterValue) {
-            item.style.display = "flex"; // or block depending on original display
-            // For cards from our grid, it's flex from .card class
-            setTimeout(() => {
-              item.style.transform = "scale(1)";
-              item.style.opacity = "1";
-            }, 50);
+            item.style.display = "flex";
+            // Force reflow before animating in
+            void item.offsetHeight;
+            item.style.transform = "scale(1)";
+            item.style.opacity = "1";
           } else {
             item.style.display = "none";
           }
-        }, 400);
+        }, 350);
       });
     });
   });
