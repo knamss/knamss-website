@@ -1,282 +1,435 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Реальный тайтл должен генерироваться динамически или прописываться для каждого выпуска вручную -->
+    <!-- Этот шаблон предназначен для копирования при создании страниц новых выпусков -->
+    <title>Эпизод 3: Почему болят суставы челюсти? | К.Н.А.М.С.С.</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO: Имя гостя и тема обязательно должны быть в Title -->
-    <title>Имя Гостя - Тема Выпуска | Подкаст К.Н.А.М.С.С.</title>
-    <!-- SEO: Описание со всеми ключевыми словами для поисковиков -->
-    <meta name="description"
-        content="Полный разбор темы X от эксперта Имя Фамилия. Узнайте все о современных методах лечения стоматологических проблем в подкасте КНАМСС.">
+    <meta
+      name="description"
+      content="Обсуждаем гнатологию, хруст при открывании рта и роль ортодонта."
+    />
 
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-            --text-muted: #64748b;
-            --accent-color: #0ea5e9;
-            --accent-hover: #0284c7;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --border-radius: 16px;
+    <!-- Open Graph (для соцсетей) -->
+    <meta
+      property="og:title"
+      content="Эпизод 3: Почему болят суставы челюсти?"
+    />
+    <meta
+      property="og:description"
+      content="Обсуждаем гнатологию, хруст при открывании рта и роль ортодонта в лечении суставов. В гостях врач-гнатолог Иван Иванов."
+    />
+    <meta property="og:type" content="article" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+
+    <!-- Schema.org (JSON-LD) для PodcastEpisode -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "PodcastEpisode",
+        "name": "Эпизод 3: Почему болят суставы челюсти?",
+        "description": "Обсуждаем гнатологию, хруст при открывании рта и роль ортодонта в лечении суставов.",
+        "datePublished": "2024-03-15",
+        "author": {
+          "@type": "Organization",
+          "name": "К.Н.А.М.С.С."
+        },
+        "timeRequired": "PT45M20S",
+        "video": {
+          "@type": "VideoObject",
+          "name": "Почему болят суставы челюсти?",
+          "description": "Обсуждаем гнатологию и хруст при открывании рта.",
+          "thumbnailUrl": "https://via.placeholder.com/1200x630",
+          "uploadDate": "2024-03-15T08:00:00+03:00",
+          "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
         }
+      }
+    </script>
+  </head>
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
+  <body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="page-transition"></div>
 
-        a {
-            text-decoration: none;
-            color: var(--accent-color);
-        }
-
-        .navbar {
-            background-color: #ffffff;
-            padding: 15px 40px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: #0f172a;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .episode-header {
-            margin-bottom: 40px;
-        }
-
-        .episode-tag {
-            display: inline-block;
-            background-color: #e0f2fe;
-            color: #0369a1;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            line-height: 1.2;
-            margin: 0 0 20px 0;
-            color: #0f172a;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-            border: 1px solid var(--border-color);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Блок с Информацией о госте */
-        .guest-card {
-            background-color: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            display: flex;
-            gap: 25px;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .guest-photo {
-            width: 100px;
-            height: 100px;
-            background-color: var(--bg-color);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .guest-info h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.5rem;
-        }
-
-        .guest-info p {
-            margin: 0;
-            color: var(--text-muted);
-        }
-
-        /* SEO Текст - Расшифровка */
-        .transcript {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            margin-bottom: 50px;
-        }
-
-        .transcript h2 {
-            margin-top: 0;
-            font-size: 1.8rem;
-        }
-
-        .timecode {
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-right: 15px;
-        }
-
-        .transcript-item {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .transcript-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        /* Призыв к действию (Запись к врачам) */
-        .cta-section {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            text-align: center;
-            border: 1px solid #bae6fd;
-            margin-bottom: 50px;
-        }
-
-        .cta-section h2 {
-            margin-top: 0;
-            font-size: 1.8rem;
-            color: #0369a1;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3);
-            margin-top: 20px;
-            transition: all 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .guest-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .transcript {
-                padding: 20px;
-            }
-        }
-    </style>
-</head>
-
-<body>
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">🎙️ К.Н.А.М.С.С.</a>
-        <a href="episodes.html" style="margin-left: auto; font-weight: 600;">Все выпуски</a>
+      <div class="logo">
+        <a
+          href="index.html"
+          onclick="
+            event.preventDefault();
+            triggerPageExit('index.html');
+          "
+          >К.Н.А.М.С.С.</a
+        >
+      </div>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li>
+          <a
+            href="index.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('index.html');
+            "
+            >Главная</a
+          >
+        </li>
+        <li>
+          <a
+            href="about.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('about.html');
+            "
+            >О нас</a
+          >
+        </li>
+        <li>
+          <a
+            href="episodes.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('episodes.html');
+            "
+            >Выпуски</a
+          >
+        </li>
+        <li>
+          <a
+            href="guests.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('guests.html');
+            "
+            >Гости</a
+          >
+        </li>
+      </ul>
     </nav>
 
-    <main class="container">
-        <!-- Заголовок выпуска -->
-        <div class="episode-header">
-            <span class="episode-tag">Выпуск #12</span>
-            <h1>Название скандальной или полезной темы выпуска</h1>
-            <p style="color: var(--text-muted); font-size: 1.1rem;">Опубликовано: 15 Марта 2026</p>
-        </div>
+    <main>
+      <section
+        class="section"
+        style="padding-top: calc(var(--nav-height) + 60px)"
+      >
+        <div class="container reveal">
+          <!-- Кнопка назад -->
+          <a
+            href="episodes.html"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              font-weight: 500;
+              color: var(--text-secondary);
+              margin-bottom: 2rem;
+              transition: color 0.3s;
+            "
+            onmouseover="this.style.color = 'var(--accent-primary)'"
+            onmouseout="this.style.color = 'var(--text-secondary)'"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('episodes.html');
+            "
+          >
+            ← Ко всем выпускам
+          </a>
 
-        <!-- Видео плеер -->
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Podcast Video" allowfullscreen></iframe>
-        </div>
+          <div style="margin-bottom: 2rem">
+            <span
+              style="
+                display: inline-block;
+                padding: 4px 12px;
+                background: rgba(59, 130, 246, 0.1);
+                color: var(--accent-primary);
+                border-radius: 20px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-bottom: 1rem;
+              "
+              >Эпизод 3</span
+            >
+            <h1 style="font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 1rem">
+              Почему болят суставы челюсти?
+            </h1>
+            <p
+              style="
+                color: var(--text-secondary);
+                font-size: 1.1rem;
+                max-width: 800px;
+              "
+            >
+              15 марта 2024 &bull; 45 минут
+            </p>
+          </div>
 
-        <!-- SEO Карточка гостя (Поисковики любят чёткую структуру) -->
-        <div class="guest-card">
-            <div class="guest-photo"></div>
-            <div class="guest-info">
-                <h3>В гостях: Имя Фамилия Гостя</h3>
-                <p>Доктор медицинских наук, владелец клиники "СуперЗуб". Разбираем с ним самые частые ошибки пациентов
-                    при выборе клиники и как избежать обмана.</p>
+          <!-- Видео плеер -->
+          <div
+            class="video-container"
+            style="
+              position: relative;
+              padding-bottom: 56.25%;
+              height: 0;
+              overflow: hidden;
+              border-radius: var(--radius-lg);
+              box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+              border: 1px solid var(--border-light);
+              margin-bottom: 4rem;
+            "
+          >
+            <iframe
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+              "
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="КНАМСС Эпизод 3"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <!-- Контент выпуска -->
+          <div
+            style="max-width: 800px; margin: 0 auto"
+            class="reveal reveal-delay-1"
+          >
+            <h2
+              class="section-title"
+              style="text-align: left; margin-bottom: 1.5rem; font-size: 2rem"
+            >
+              О чем выпуск
+            </h2>
+            <p
+              style="
+                font-size: 1.15rem;
+                color: var(--text-secondary);
+                line-height: 1.8;
+                margin-bottom: 2rem;
+              "
+            >
+              В этом эпизоде мы разбираем одну из самых частых и загадочных
+              проблем стоматологии — дисфункцию височно-нижнечелюстного сустава
+              (ВНЧС). Многие пациенты жалуются на щелчки, хруст или даже боль
+              при жевании и зевании, но часто не знают, к какому врачу с этим
+              обращаться.
+            </p>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1.5rem">Таймкоды:</h3>
+            <ul
+              style="
+                list-style: none;
+                padding: 0;
+                font-family: var(--font-body);
+                color: var(--text-secondary);
+              "
+            >
+              <li
+                style="
+                  margin-bottom: 1rem;
+                  padding-bottom: 1rem;
+                  border-bottom: 1px solid var(--border-light);
+                  display: flex;
+                  gap: 1rem;
+                "
+              >
+                <span
+                  style="
+                    color: var(--accent-primary);
+                    font-weight: 500;
+                    min-width: 50px;
+                  "
+                  >00:00</span
+                >
+                <span>Вступление. Знакомство с гостем</span>
+              </li>
+              <li
+                style="
+                  margin-bottom: 1rem;
+                  padding-bottom: 1rem;
+                  border-bottom: 1px solid var(--border-light);
+                  display: flex;
+                  gap: 1rem;
+                "
+              >
+                <span
+                  style="
+                    color: var(--accent-primary);
+                    font-weight: 500;
+                    min-width: 50px;
+                  "
+                  >05:12</span
+                >
+                <span>Что такое ВНЧС и почему он хрустит?</span>
+              </li>
+              <li
+                style="
+                  margin-bottom: 1rem;
+                  padding-bottom: 1rem;
+                  border-bottom: 1px solid var(--border-light);
+                  display: flex;
+                  gap: 1rem;
+                "
+              >
+                <span
+                  style="
+                    color: var(--accent-primary);
+                    font-weight: 500;
+                    min-width: 50px;
+                  "
+                  >14:30</span
+                >
+                <span>Опасны ли щелчки, если ничего не болит?</span>
+              </li>
+              <li
+                style="
+                  margin-bottom: 1rem;
+                  padding-bottom: 1rem;
+                  border-bottom: 1px solid var(--border-light);
+                  display: flex;
+                  gap: 1rem;
+                "
+              >
+                <span
+                  style="
+                    color: var(--accent-primary);
+                    font-weight: 500;
+                    min-width: 50px;
+                  "
+                  >28:45</span
+                >
+                <span>Брекеты или сплинты? Как исправить проблему.</span>
+              </li>
+              <li style="display: flex; gap: 1rem">
+                <span
+                  style="
+                    color: var(--accent-primary);
+                    font-weight: 500;
+                    min-width: 50px;
+                  "
+                  >40:10</span
+                >
+                <span>Советы: как расслабить челюсть дома.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Гость выпуска (Связанная сущность) -->
+      <section class="section" style="padding-top: 0">
+        <div class="container reveal reveal-delay-2">
+          <div
+            style="
+              background: var(--bg-secondary);
+              border: 1px solid var(--border-light);
+              border-radius: var(--radius-md);
+              padding: 3rem;
+              max-width: 800px;
+              margin: 0 auto;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 2rem;
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                overflow: hidden;
+                flex-shrink: 0;
+                border: 2px solid var(--accent-primary);
+              "
+            >
+              <img
+                src="https://via.placeholder.com/200"
+                alt="Иван Иванов"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
             </div>
-        </div>
-
-        <!-- БЛОК КОНВЕРСИИ ТРАФИКА (Для чего все затевалось) -->
-        <div class="cta-section">
-            <h2>Понравился подход наших ведущих?</h2>
-            <p>Анастасия Маркова, София Сапрыкина и Константин Наам принимают пациентов в своих клиниках. Доверьте свою
-                улыбку профессионалам.</p>
-            <a href="index.html#latest" class="btn-primary">Сайты и запись к ведущим →</a>
-        </div>
-
-        <!-- SEO ТЕКСТ (Таймкоды и выжимка для Яндекса) -->
-        <div class="transcript">
-            <h2>О чем выпуск:</h2>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Ниже представлены главные темы, которые мы
-                обсудили в этом выпуске.</p>
-
-            <div class="transcript-item">
-                <span class="timecode">02:15</span>
-                <strong>Мифы об имплантации зубов</strong>
-                <p>Константин Наам рассказывает, почему современные протоколы All-on-4 позволяют вставить зубы за один
-                    день без боли и отеков. Гость делится историей своей практики.</p>
+            <div style="flex-grow: 1">
+              <h4
+                style="
+                  margin-bottom: 0.5rem;
+                  color: var(--text-muted);
+                  text-transform: uppercase;
+                  font-size: 0.85rem;
+                  letter-spacing: 1px;
+                "
+              >
+                Гость выпуска
+              </h4>
+              <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem">
+                Иван Иванов
+              </h3>
+              <p style="color: var(--text-secondary); margin-bottom: 1rem">
+                Врач-гнатолог, ортопед. Занимается сложной реконструкцией
+                прикуса.
+              </p>
+              <a
+                href="guests.html"
+                style="font-weight: 500; font-size: 0.9rem"
+                onclick="
+                  event.preventDefault();
+                  triggerPageExit('guests.html');
+                "
+                >Узнать больше о госте →</a
+              >
             </div>
-
-            <div class="transcript-item">
-                <span class="timecode">15:30</span>
-                <strong>Как выбрать брекеты в 2026 году?</strong>
-                <p>Анастасия Маркова объясняет разницу между элайнерами и металлическими брекетами. Почему эстетика не
-                    всегда означает качество лечения.</p>
-            </div>
-
-            <div class="transcript-item">
-                <span class="timecode">32:45</span>
-                <strong>Здоровье десен — фундамент зубов</strong>
-                <p>София Сапрыкина о том, как скрытый пародонтит сводит на нет работу хирургов и ортодонтов.
-                    Профилактика и домашний уход.</p>
-            </div>
+          </div>
         </div>
+      </section>
     </main>
-</body>
 
+    <footer style="padding-top: 40px">
+      <div class="container">
+        <p
+          style="
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+          "
+        >
+          &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+  </body>
 </html>

@@ -1,176 +1,333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Выпуски | Подкаст К.Н.А.М.С.С.</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Все выпуски | Подкаст стоматологов К.Н.А.М.С.С.</title>
-    <meta name="description"
-        content="Полный архив выпусков подкаста КНАМСС. Интервью со стоматологами, разбор клинических случаев, советы пациентам и честные разговоры о медицине.">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-            --text-muted: #64748b;
-            --accent-color: #0ea5e9;
-            --accent-hover: #0284c7;
-            --border-color: #e2e8f0;
-        }
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
+  <body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="page-transition"></div>
 
-        .navbar {
-            background-color: #ffffff;
-            padding: 15px 40px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: #0f172a;
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.5rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .episodes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .episode-card {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .episode-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .episode-thumb {
-            width: 100%;
-            height: 180px;
-            background-color: #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #94a3b8;
-        }
-
-        .episode-content {
-            padding: 25px;
-        }
-
-        .episode-num {
-            color: var(--accent-color);
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .episode-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin: 0 0 15px 0;
-            color: #0f172a;
-        }
-
-        .episode-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .btn-read {
-            display: inline-block;
-            text-decoration: none;
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        .btn-read:hover {
-            color: var(--accent-hover);
-        }
-    </style>
-</head>
-
-<body>
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">🎙️ К.Н.А.М.С.С.</a>
+      <div class="logo">
+        <a
+          href="index.html"
+          onclick="
+            event.preventDefault();
+            triggerPageExit('index.html');
+          "
+          >К.Н.А.М.С.С.</a
+        >
+      </div>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li>
+          <a
+            href="index.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('index.html');
+            "
+            >Главная</a
+          >
+        </li>
+        <li>
+          <a
+            href="about.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('about.html');
+            "
+            >О нас</a
+          >
+        </li>
+        <li>
+          <a
+            href="episodes.html"
+            class="nav-link active"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('episodes.html');
+            "
+            >Выпуски</a
+          >
+        </li>
+        <li>
+          <a
+            href="guests.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('guests.html');
+            "
+            >Гости</a
+          >
+        </li>
+      </ul>
     </nav>
 
-    <main class="container">
-        <h1>Каталог выпусков</h1>
-
-        <div class="episodes-grid">
-            <!-- Выпуск 1 -->
-            <div class="episode-card">
-                <div class="episode-thumb">Обложка видео</div>
-                <div class="episode-content">
-                    <span class="episode-num">ВЫПУСК #3</span>
-                    <h3 class="episode-title">Имя Гостя - Тема Выпуска</h3>
-                    <p class="episode-desc">Короткое описание того, о чем говорили в выпуске. Пара предложений для
-                        привлечения внимания.</p>
-                    <a href="episode-template.html" class="btn-read">Смотреть и читать →</a>
-                </div>
-            </div>
-
-            <!-- Выпуск 2 -->
-            <div class="episode-card">
-                <div class="episode-thumb">Обложка видео</div>
-                <div class="episode-content">
-                    <span class="episode-num">ВЫПУСК #2</span>
-                    <h3 class="episode-title">Второй Гость - Скандалы в медицине</h3>
-                    <p class="episode-desc">Разбираем юридические аспекты работы клиник и почему пациенты часто бывают
-                        неправы.</p>
-                    <a href="episode-template.html" class="btn-read">Смотреть и читать →</a>
-                </div>
-            </div>
-
-            <!-- Выпуск 3 -->
-            <div class="episode-card">
-                <div class="episode-thumb">Обложка видео</div>
-                <div class="episode-content">
-                    <span class="episode-num">ВЫПУСК #1</span>
-                    <h3 class="episode-title">Знакомство с ведущими</h3>
-                    <p class="episode-desc">Анастасия, София и Константин рассказывают о себе, своем пути в медицину и
-                        философии подкаста.</p>
-                    <a href="episode-template.html" class="btn-read">Смотреть и читать →</a>
-                </div>
-            </div>
+    <main>
+      <header
+        class="section"
+        style="padding-top: calc(var(--nav-height) + 100px); text-align: center"
+      >
+        <div class="container reveal">
+          <h1>ВСЕ ВЫПУСКИ</h1>
+          <p style="max-width: 600px; margin: 0 auto; font-size: 1.25rem">
+            Смотрите и слушайте полные эпизоды на любые стоматологические темы.
+          </p>
         </div>
-    </main>
-</body>
+      </header>
 
+      <section class="section" style="padding-top: 0">
+        <div class="container">
+          <div class="grid-3" style="gap: 3rem">
+            <!-- Episode Card: Full width for the latest, or standard grid via css layout adaptations -->
+            <div
+              class="card reveal img-hover-zoom"
+              style="padding: 0; overflow: hidden; cursor: pointer"
+              onclick="
+                event.preventDefault();
+                triggerPageExit('episode-template.html');
+              "
+            >
+              <div
+                style="
+                  height: 220px;
+                  width: 100%;
+                  background: var(--bg-secondary);
+                  position: relative;
+                "
+              >
+                <img
+                  src="https://via.placeholder.com/600x400/141414/3b82f6"
+                  alt="Обложка"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+                <div
+                  style="
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    background: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 4px 12px;
+                    border-radius: 4px;
+                    font-weight: 600;
+                    font-size: 0.8rem;
+                  "
+                >
+                  45:20
+                </div>
+              </div>
+              <div style="padding: 2rem">
+                <span
+                  style="
+                    color: var(--accent-primary);
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                  "
+                  >Эпизод 3</span
+                >
+                <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
+                  Почему болят суставы челюсти?
+                </h3>
+                <p style="margin-top: 1rem; margin-bottom: 2rem">
+                  Обсуждаем гнатологию, хруст при открывании рта и роль
+                  ортодонта.
+                </p>
+                <span
+                  class="btn-outline"
+                  style="
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    border: 1px solid var(--border-light);
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                  "
+                  >Смотреть</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="card reveal reveal-delay-1 img-hover-zoom"
+              style="padding: 0; overflow: hidden; cursor: pointer"
+              onclick="
+                event.preventDefault();
+                triggerPageExit('episode-template.html');
+              "
+            >
+              <div
+                style="
+                  height: 220px;
+                  width: 100%;
+                  background: var(--bg-secondary);
+                  position: relative;
+                "
+              >
+                <img
+                  src="https://via.placeholder.com/600x400/141414/3b82f6"
+                  alt="Обложка"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+                <div
+                  style="
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    background: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 4px 12px;
+                    border-radius: 4px;
+                    font-weight: 600;
+                    font-size: 0.8rem;
+                  "
+                >
+                  62:15
+                </div>
+              </div>
+              <div style="padding: 2rem">
+                <span
+                  style="
+                    color: var(--accent-primary);
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                  "
+                  >Эпизод 2</span
+                >
+                <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
+                  Мифы об имплантации
+                </h3>
+                <p style="margin-top: 1rem; margin-bottom: 2rem">
+                  Развеиваем страхи: больно ли ставить имплант и как он
+                  приживается.
+                </p>
+                <span
+                  class="btn-outline"
+                  style="
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    border: 1px solid var(--border-light);
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                  "
+                  >Смотреть</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="card reveal reveal-delay-2 img-hover-zoom"
+              style="padding: 0; overflow: hidden; cursor: pointer"
+              onclick="
+                event.preventDefault();
+                triggerPageExit('episode-template.html');
+              "
+            >
+              <div
+                style="
+                  height: 220px;
+                  width: 100%;
+                  background: var(--bg-secondary);
+                  position: relative;
+                "
+              >
+                <img
+                  src="https://via.placeholder.com/600x400/141414/3b82f6"
+                  alt="Обложка"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+                <div
+                  style="
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    background: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 4px 12px;
+                    border-radius: 4px;
+                    font-weight: 600;
+                    font-size: 0.8rem;
+                  "
+                >
+                  50:40
+                </div>
+              </div>
+              <div style="padding: 2rem">
+                <span
+                  style="
+                    color: var(--accent-primary);
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                  "
+                  >Эпизод 1</span
+                >
+                <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
+                  Знакомство. Кто мы?
+                </h3>
+                <p style="margin-top: 1rem; margin-bottom: 2rem">
+                  Первый выпуск нашего подкаста. Вводим в курс дела, о чем будем
+                  говорить.
+                </p>
+                <span
+                  class="btn-outline"
+                  style="
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    border: 1px solid var(--border-light);
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                  "
+                  >Смотреть</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p
+          style="
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+          "
+        >
+          &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+  </body>
 </html>

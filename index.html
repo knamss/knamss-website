@@ -1,382 +1,287 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>К.Н.А.М.С.С. | Подкаст стоматологов без тайн</title>
-    <meta name="description"
-        content="Подкаст стоматологов без тайн: экспертно, доступно и честно. Анастасия Маркова, София Сапрыкина, Константин Наам обсуждают стоматологию с интересными гостями.">
-    <meta name="keywords"
-        content="стоматология, подкаст, ортодонт, хирург-имплантолог, стоматолог-терапевт, лечение зубов, брекеты, имплантация зубов">
+    <meta
+      name="description"
+      content="Подкаст стоматологов без тайн: экспертно, доступно и честно. Анастасия Маркова, София Сапрыкина, Константин Наам обсуждают стоматологию с интересными гостями."
+    />
+    <meta
+      name="keywords"
+      content="стоматология, подкаст, ортодонт, хирург-имплантолог, стоматолог-терапевт, лечение зубов, брекеты, имплантация зубов"
+    />
 
-    <!-- Open Graph (для красивых ссылок в соцсетях) -->
-    <meta property="og:title" content="К.Н.А.М.С.С. | Подкаст стоматологов без тайн">
-    <meta property="og:description" content="Подкаст стоматологов без тайн: экспертно, доступно и честно.">
-    <meta property="og:type" content="website">
+    <!-- Open Graph for SEO -->
+    <meta
+      property="og:title"
+      content="К.Н.А.М.С.С. | Подкаст стоматологов без тайн"
+    />
+    <meta
+      property="og:description"
+      content="Подкаст стоматологов без тайн: экспертно, доступно и честно."
+    />
+    <meta property="og:type" content="website" />
 
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-            --text-muted: #64748b;
-            --accent-color: #0ea5e9;
-            --accent-hover: #0284c7;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --border-radius: 16px;
-        }
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-        a {
-            text-decoration: none;
-            color: var(--accent-color);
-            transition: color 0.2s;
-        }
+    <!-- Page Transition -->
+    <div class="page-transition"></div>
 
-        a:hover {
-            color: var(--accent-hover);
-        }
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a
+          href="index.html"
+          onclick="
+            event.preventDefault();
+            triggerPageExit('index.html');
+          "
+          >К.Н.А.М.С.С.</a
+        >
+      </div>
 
-        header {
-            text-align: center;
-            padding: 100px 20px 80px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-bottom: 1px solid var(--border-color);
-        }
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-        header h1 {
-            font-size: 4rem;
-            margin: 0 0 20px 0;
-            color: #0f172a;
-            font-weight: 800;
-            letter-spacing: -2px;
-            text-transform: uppercase;
-        }
+      <ul class="nav-links">
+        <li>
+          <a
+            href="index.html"
+            class="nav-link active"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('index.html');
+            "
+            >Главная</a
+          >
+        </li>
+        <li>
+          <a
+            href="about.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('about.html');
+            "
+            >О нас</a
+          >
+        </li>
+        <li>
+          <a
+            href="episodes.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('episodes.html');
+            "
+            >Выпуски</a
+          >
+        </li>
+        <li>
+          <a
+            href="guests.html"
+            class="nav-link"
+            onclick="
+              event.preventDefault();
+              triggerPageExit('guests.html');
+            "
+            >Гости</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-        header p {
-            font-size: 1.35rem;
-            max-width: 650px;
-            margin: 0 auto 30px auto;
-            color: var(--text-muted);
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3);
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.4);
-            color: white;
-        }
-
-        .btn-outline {
-            display: inline-block;
-            background: transparent;
-            color: var(--accent-color);
-            padding: 8px 20px;
-            border: 2px solid var(--accent-color);
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            margin-top: 15px;
-        }
-
-        .btn-outline:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #0f172a;
-            font-weight: 700;
-        }
-
-        .latest-episode {
-            margin-bottom: 100px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border: 1px solid var(--border-color);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 40px 30px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            border-color: #cbd5e1;
-        }
-
-        .photo-placeholder {
-            width: 140px;
-            height: 140px;
-            background-color: #f1f5f9;
-            border-radius: 50%;
-            margin: 0 auto 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            font-size: 0.9rem;
-            border: 4px solid #ffffff;
-            box-shadow: 0 0 0 3px var(--accent-color);
-            overflow: hidden;
-        }
-
-        .photo-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.4rem;
-            color: #0f172a;
-        }
-
-        .card p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 1rem;
-            flex-grow: 1;
-        }
-
-        .guests-section {
-            background-color: #ffffff;
-            padding: 80px 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .socials-section {
-            background-color: #0f172a;
-            color: #ffffff;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .socials-section h2 {
-            margin-top: 0;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            background-color: #1e293b;
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            border: 1px solid #334155;
-            transition: all 0.2s ease;
-        }
-
-        .social-btn:hover {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-            transform: translateY(-3px);
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.8rem;
-            }
-
-            header p {
-                font-size: 1.15rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            header {
-                padding: 60px 20px 40px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <h1>🎙️ К.Н.А.М.С.С.</h1>
-        <p>Подкаст стоматологов без тайн: разбираем сложные темы простым языком, зовем крутых экспертов и смело
-            обсуждаем то, о чем пациенты стесняются спросить.</p>
-        <a href="#latest" class="btn-primary">Смотреть новый выпуск</a>
-    </header>
-
+    <!-- Main Content -->
     <main>
-        <div class="container" id="latest">
-            <section class="latest-episode">
-                <h2 class="section-title">Последний выпуск</h2>
-                <!-- Будущая SEO-ссылка на страницу выпуска -->
-                <!-- <div style="text-align: right; margin-bottom: 10px;"><a href="episodes/latest.html">Читать полное описание выпуска →</a></div> -->
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="КНАМСС Последний выпуск"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-            </section>
+      <!-- Hero Section -->
+      <header
+        class="hero-section"
+        style="
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+          padding-top: var(--nav-height);
+        "
+      >
+        <!-- Ambient Shape Backgrounds for Parallax -->
+        <div class="bg-shape shape-1 parallax-mouse" data-speed="-15"></div>
+        <div class="bg-shape shape-2 parallax-mouse" data-speed="25"></div>
 
-            <section>
-                <h2 class="section-title">Ведущие подкаста</h2>
-                <div class="grid-3">
-                    <div class="card">
-                        <div class="photo-placeholder">Фото</div>
-                        <h3>Анастасия Маркова</h3>
-                        <p>Стоматолог-ортодонт. Исправляет прикус и создает здоровые улыбки.</p>
-                        <!-- SEO ссылка на основной сайт врача -->
-                        <a href="#" class="btn-outline">Записаться на прием</a>
-                    </div>
-                    <div class="card">
-                        <div class="photo-placeholder">Фото</div>
-                        <h3>София Сапрыкина</h3>
-                        <p>Хирург, пародонтолог. Лечит десны и возвращает зубам прочный фундамент.</p>
-                        <!-- SEO ссылка на основной сайт врача -->
-                        <a href="#" class="btn-outline">Записаться на прием</a>
-                    </div>
-                    <div class="card">
-                        <div class="photo-placeholder">Фото</div>
-                        <h3>Константин Наам</h3>
-                        <p>Стоматолог-хирург. Проводит сложные удаления и имплантации без боли.</p>
-                        <!-- SEO ссылка на основной сайт врача -->
-                        <a href="#" class="btn-outline">Записаться на прием</a>
-                    </div>
-                </div>
-            </section>
+        <div class="container relative z-10 reveal">
+          <h1
+            style="
+              font-size: clamp(4rem, 10vw, 8rem);
+              margin-bottom: 1rem;
+              line-height: 1;
+              font-weight: 800;
+              background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            "
+          >
+            ПОДКАСТ<br />БЕЗ ТАЙН
+          </h1>
+          <p
+            style="
+              font-size: clamp(1.1rem, 2vw, 1.5rem);
+              max-width: 600px;
+              margin: 0 auto 3rem;
+              color: var(--text-secondary);
+            "
+            class="reveal reveal-delay-1"
+          >
+            Разбираем сложные темы простым языком, зовем крутых экспертов и
+            смело обсуждаем то, о чем пациенты стесняются спросить.
+          </p>
+
+          <div class="magnetic-wrap reveal reveal-delay-2">
+            <a
+              href="#latest"
+              class="btn btn-primary"
+              style="font-size: 1.25rem; padding: 1.25rem 3rem"
+              >Смотреть новый выпуск</a
+            >
+          </div>
         </div>
+      </header>
 
-        <section class="guests-section">
-            <div class="container" style="padding-top: 0; padding-bottom: 0;">
-                <h2 class="section-title">Наши гости</h2>
-                <p style="text-align: center; max-width: 600px; margin: 0 auto 40px auto; color: var(--text-muted);">
-                    Известные врачи, владельцы клиник и эксперты из сферы стоматологии и медицины, с которыми мы
-                    обсуждаем насущные проблемы.
-                </p>
-                <div class="grid-3">
-                    <!-- Заглушки для гостей. Здесь будут ссылки на отдельные SEO-страницы episode.html -->
-                    <div class="card" style="padding: 25px 20px;">
-                        <div class="photo-placeholder" style="width: 100px; height: 100px; border-width: 2px;">Гость
-                        </div>
-                        <h3 style="font-size: 1.15rem;">Имя Гостя 1</h3>
-                        <p style="font-size: 0.9rem; margin-bottom: 15px;">Главврач топовой клиники, эксперт по
-                            отбеливанию.</p>
-                        <a href="episode-template.html" style="font-size: 0.9rem; font-weight: 600;">Смотреть выпуск
-                            →</a>
-                    </div>
-                    <div class="card" style="padding: 25px 20px;">
-                        <div class="photo-placeholder" style="width: 100px; height: 100px; border-width: 2px;">Гость
-                        </div>
-                        <h3 style="font-size: 1.15rem;">Имя Гостя 2</h3>
-                        <p style="font-size: 0.9rem; margin-bottom: 15px;">Известный психолог, обсуждаем выгорание
-                            врачей.</p>
-                        <a href="episode-template.html" style="font-size: 0.9rem; font-weight: 600;">Смотреть выпуск
-                            →</a>
-                    </div>
-                    <div class="card" style="padding: 25px 20px;">
-                        <div class="photo-placeholder" style="width: 100px; height: 100px; border-width: 2px;">Гость
-                        </div>
-                        <h3 style="font-size: 1.15rem;">Имя Гостя 3</h3>
-                        <p style="font-size: 0.9rem; margin-bottom: 15px;">Юрист. Защита пациентов и врачей в суде.</p>
-                        <a href="episode-template.html" style="font-size: 0.9rem; font-weight: 600;">Смотреть выпуск
-                            →</a>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="episodes.html" class="btn-outline">Смотреть все выпуски</a>
-                </div>
-            </div>
-        </section>
+      <!-- Latest Episode Section -->
+      <section id="latest" class="section">
+        <div class="container reveal">
+          <h2 style="text-align: center; margin-bottom: 3rem">
+            Последний выпуск
+          </h2>
+
+          <div
+            class="video-container"
+            style="
+              position: relative;
+              padding-bottom: 56.25%;
+              height: 0;
+              border-radius: var(--radius-lg);
+              overflow: hidden;
+              box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+              border: 1px solid var(--border-light);
+              background: #000;
+            "
+          >
+            <iframe
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+              "
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="КНАМСС Последний выпуск"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div
+            style="text-align: center; margin-top: 3rem"
+            class="magnetic-wrap reveal reveal-delay-1"
+          >
+            <a
+              href="episodes.html"
+              class="btn btn-outline"
+              onclick="
+                event.preventDefault();
+                triggerPageExit('episodes.html');
+              "
+              >Все выпуски</a
+            >
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="socials-section">
-        <h2>Смотрите и слушайте нас:</h2>
-        <div class="social-links">
-            <a href="https://www.youtube.com/@knamss" class="social-btn" target="_blank"
-                rel="noopener noreferrer">YouTube</a>
-            <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer">ВК Видео</a>
-            <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer">Дзен</a>
-            <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer">RuTube</a>
-            <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer">Яндекс Музыка</a>
+    <!-- Footer -->
+    <footer>
+      <div class="container reveal">
+        <h2 style="font-size: 2rem; margin-bottom: 2rem">
+          Смотрите и слушайте нас:
+        </h2>
+        <div class="social-links magnetic-wrap">
+          <a
+            href="https://www.youtube.com/@knamss"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >YT</a
+          >
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >ВК</a
+          >
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Дз</a
+          >
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >RT</a
+          >
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >ЯМ</a
+          >
         </div>
-        <p style="margin-top: 50px; color: #475569; font-size: 0.9rem;">&copy; 2026 Подкаст К.Н.А.М.С.С. Все права
-            защищены.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem">
+          &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
+        </p>
+      </div>
     </footer>
-</body>
 
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+  </body>
 </html>
