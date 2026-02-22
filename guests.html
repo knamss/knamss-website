@@ -1,248 +1,199 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Гости | Подкаст К.Н.А.М.С.С.</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гости | Подкаст К.Н.А.М.С.С.</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="images/favicon.jpg" />
-  </head>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 
-  <body>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-    <div class="page-transition"></div>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg" />
+</head>
 
-    <nav class="navbar">
-      <div class="logo">
-        <a
-          href="index.html"
-          onclick="
+<body>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <img src="images/favicon.jpg" alt="Loading..." class="preloader-logo">
+      <div class="preloader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <div class="page-transition"></div>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html" onclick="
             event.preventDefault();
             triggerPageExit('index.html');
-          "
-          style="display: flex; align-items: center; height: 100%"
-        >
-          <img
-            src="images/logo-dark.jpg"
-            alt="К.Н.А.М.С.С."
-            style="
+          " style="display: flex; align-items: center; height: 100%">
+        <img src="images/logo-dark.jpg" alt="К.Н.А.М.С.С." style="
               height: 45px;
               width: auto;
               max-height: 100%;
               border-radius: 5px;
-            "
-          />
-        </a>
-      </div>
-      <button class="menu-toggle" aria-label="Toggle Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links">
-        <li>
-          <a
-            href="index.html"
-            class="nav-link"
-            onclick="
+            " />
+      </a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('index.html');
-            "
-            >Главная</a
-          >
-        </li>
-        <li>
-          <a
-            href="about.html"
-            class="nav-link"
-            onclick="
+            ">Главная</a>
+      </li>
+      <li>
+        <a href="about.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('about.html');
-            "
-            >О нас</a
-          >
-        </li>
-        <li>
-          <a
-            href="episodes.html"
-            class="nav-link"
-            onclick="
+            ">О нас</a>
+      </li>
+      <li>
+        <a href="episodes.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('episodes.html');
-            "
-            >Выпуски</a
-          >
-        </li>
-        <li>
-          <a
-            href="guests.html"
-            class="nav-link active"
-            onclick="
+            ">Выпуски</a>
+      </li>
+      <li>
+        <a href="guests.html" class="nav-link active" onclick="
               event.preventDefault();
               triggerPageExit('guests.html');
-            "
-            >Гости</a
-          >
-        </li>
-      </ul>
-    </nav>
+            ">Гости</a>
+      </li>
+    </ul>
+  </nav>
 
-    <main>
-      <header
-        class="section"
-        style="padding-top: calc(var(--nav-height) + 100px); text-align: center"
-      >
-        <div class="container reveal">
-          <h1>НАШИ ГОСТИ</h1>
-          <p style="max-width: 600px; margin: 0 auto; font-size: 1.25rem">
-            Известные врачи, владельцы клиник и эксперты из сферы стоматологии и
-            смежной медицины.
-          </p>
+  <main>
+    <header class="section" style="padding-top: calc(var(--nav-height) + 100px); text-align: center">
+      <div class="container reveal">
+        <h1>НАШИ ГОСТИ</h1>
+        <p style="max-width: 600px; margin: 0 auto; font-size: 1.25rem">
+          Известные врачи, владельцы клиник и эксперты из сферы стоматологии и
+          смежной медицины.
+        </p>
+      </div>
+    </header>
+
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <!-- Dynamic Filter Buttons -->
+        <div class="filter-group reveal reveal-up"
+          style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+          <button class="btn btn-outline filter-btn active" data-filter="all">Все гости</button>
+          <button class="btn btn-outline filter-btn" data-filter="docs">Врачи</button>
+          <button class="btn btn-outline filter-btn" data-filter="experts">Другие эксперты</button>
         </div>
-      </header>
 
-      <section class="section" style="padding-top: 0">
-        <div class="container">
-          <div class="grid-3">
-            <div
-              class="card reveal reveal-delay-1 img-hover-zoom"
-              style="align-items: center; text-align: center"
-            >
-              <div
-                style="
+        <div class="grid-3 guest-grid">
+          <div class="card guest-card reveal reveal-delay-1 img-hover-zoom" data-category="docs"
+            style="align-items: center; text-align: center">
+            <div style="
                   width: 120px;
                   height: 120px;
                   border-radius: 50%;
                   overflow: hidden;
                   margin-bottom: 1.5rem;
                   border: 3px solid var(--accent-primary);
-                "
-              >
-                <img
-                  src="https://via.placeholder.com/200"
-                  alt="Гость 1"
-                  style="width: 100%; height: 100%; object-fit: cover"
-                />
-              </div>
-              <h3 style="margin-bottom: 0.5rem">Иван Иванов</h3>
-              <p style="font-size: 0.95rem; margin-bottom: 1.5rem">
-                Главврач топовой клиники, эксперт по отбеливанию.
-              </p>
-              <a
-                href="episode-template.html"
-                class="btn btn-outline"
-                style="font-size: 0.9rem; padding: 0.5rem 1.5rem"
-                onclick="
+                ">
+              <img src="https://via.placeholder.com/200" alt="Гость 1"
+                style="width: 100%; height: 100%; object-fit: cover" />
+            </div>
+            <h3 style="margin-bottom: 0.5rem">Иван Иванов</h3>
+            <p style="font-size: 0.95rem; margin-bottom: 1.5rem">
+              Главврач топовой клиники, эксперт по отбеливанию.
+            </p>
+            <a href="episode-template.html" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.5rem 1.5rem"
+              onclick="
                   event.preventDefault();
                   triggerPageExit('episode-template.html');
-                "
-                >Смотреть выпуск</a
-              >
-            </div>
+                ">Смотреть выпуск</a>
+          </div>
 
-            <div
-              class="card reveal reveal-delay-2 img-hover-zoom"
-              style="align-items: center; text-align: center"
-            >
-              <div
-                style="
+          <div class="card guest-card reveal reveal-delay-2 img-hover-zoom" data-category="experts"
+            style="align-items: center; text-align: center">
+            <div style="
                   width: 120px;
                   height: 120px;
                   border-radius: 50%;
                   overflow: hidden;
                   margin-bottom: 1.5rem;
                   border: 3px solid var(--accent-primary);
-                "
-              >
-                <img
-                  src="https://via.placeholder.com/200"
-                  alt="Гость 2"
-                  style="width: 100%; height: 100%; object-fit: cover"
-                />
-              </div>
-              <h3 style="margin-bottom: 0.5rem">Мария Смирнова</h3>
-              <p style="font-size: 0.95rem; margin-bottom: 1.5rem">
-                Клинический психолог. Обсуждаем выгорание врачей.
-              </p>
-              <a
-                href="episode-template.html"
-                class="btn btn-outline"
-                style="font-size: 0.9rem; padding: 0.5rem 1.5rem"
-                onclick="
+                ">
+              <img src="https://via.placeholder.com/200" alt="Гость 2"
+                style="width: 100%; height: 100%; object-fit: cover" />
+            </div>
+            <h3 style="margin-bottom: 0.5rem">Мария Смирнова</h3>
+            <p style="font-size: 0.95rem; margin-bottom: 1.5rem">
+              Клинический психолог. Обсуждаем выгорание врачей.
+            </p>
+            <a href="episode-template.html" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.5rem 1.5rem"
+              onclick="
                   event.preventDefault();
                   triggerPageExit('episode-template.html');
-                "
-                >Смотреть выпуск</a
-              >
-            </div>
+                ">Смотреть выпуск</a>
+          </div>
 
-            <div
-              class="card reveal reveal-delay-3 img-hover-zoom"
-              style="align-items: center; text-align: center"
-            >
-              <div
-                style="
+          <div class="card guest-card reveal reveal-delay-3 img-hover-zoom" data-category="experts"
+            style="align-items: center; text-align: center">
+            <div style="
                   width: 120px;
                   height: 120px;
                   border-radius: 50%;
                   overflow: hidden;
                   margin-bottom: 1.5rem;
                   border: 3px solid var(--accent-primary);
-                "
-              >
-                <img
-                  src="https://via.placeholder.com/200"
-                  alt="Гость 3"
-                  style="width: 100%; height: 100%; object-fit: cover"
-                />
-              </div>
-              <h3 style="margin-bottom: 0.5rem">Дмитрий Петров</h3>
-              <p style="font-size: 0.95rem; margin-bottom: 1.5rem">
-                Юрист по медицинскому праву. Защита пациентов.
-              </p>
-              <a
-                href="episode-template.html"
-                class="btn btn-outline"
-                style="font-size: 0.9rem; padding: 0.5rem 1.5rem"
-                onclick="
+                ">
+              <img src="https://via.placeholder.com/200" alt="Гость 3"
+                style="width: 100%; height: 100%; object-fit: cover" />
+            </div>
+            <h3 style="margin-bottom: 0.5rem">Дмитрий Петров</h3>
+            <p style="font-size: 0.95rem; margin-bottom: 1.5rem">
+              Юрист по медицинскому праву. Защита пациентов.
+            </p>
+            <a href="episode-template.html" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.5rem 1.5rem"
+              onclick="
                   event.preventDefault();
                   triggerPageExit('episode-template.html');
-                "
-                >Смотреть выпуск</a
-              >
-            </div>
+                ">Смотреть выпуск</a>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <footer>
-      <div class="container">
-        <p
-          style="
+  <footer>
+    <div class="container">
+      <p style="
             color: var(--text-muted);
             font-size: 0.9rem;
             text-align: center;
-          "
-        >
-          &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
-        </p>
-      </div>
-    </footer>
+          ">
+        &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
+      </p>
+    </div>
+  </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
-  </body>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+
 </html>

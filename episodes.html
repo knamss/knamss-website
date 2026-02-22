@@ -1,144 +1,122 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Выпуски | Подкаст К.Н.А.М.С.С.</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Выпуски | Подкаст К.Н.А.М.С.С.</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="images/favicon.jpg" />
-  </head>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 
-  <body>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-    <div class="page-transition"></div>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg" />
+</head>
 
-    <nav class="navbar">
-      <div class="logo">
-        <a
-          href="index.html"
-          onclick="
+<body>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <img src="images/favicon.jpg" alt="Loading..." class="preloader-logo">
+      <div class="preloader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <div class="page-transition"></div>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html" onclick="
             event.preventDefault();
             triggerPageExit('index.html');
-          "
-          style="display: flex; align-items: center; height: 100%"
-        >
-          <img
-            src="images/logo-dark.jpg"
-            alt="К.Н.А.М.С.С."
-            style="
+          " style="display: flex; align-items: center; height: 100%">
+        <img src="images/logo-dark.jpg" alt="К.Н.А.М.С.С." style="
               height: 45px;
               width: auto;
               max-height: 100%;
               border-radius: 5px;
-            "
-          />
-        </a>
-      </div>
-      <button class="menu-toggle" aria-label="Toggle Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links">
-        <li>
-          <a
-            href="index.html"
-            class="nav-link"
-            onclick="
+            " />
+      </a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('index.html');
-            "
-            >Главная</a
-          >
-        </li>
-        <li>
-          <a
-            href="about.html"
-            class="nav-link"
-            onclick="
+            ">Главная</a>
+      </li>
+      <li>
+        <a href="about.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('about.html');
-            "
-            >О нас</a
-          >
-        </li>
-        <li>
-          <a
-            href="episodes.html"
-            class="nav-link active"
-            onclick="
+            ">О нас</a>
+      </li>
+      <li>
+        <a href="episodes.html" class="nav-link active" onclick="
               event.preventDefault();
               triggerPageExit('episodes.html');
-            "
-            >Выпуски</a
-          >
-        </li>
-        <li>
-          <a
-            href="guests.html"
-            class="nav-link"
-            onclick="
+            ">Выпуски</a>
+      </li>
+      <li>
+        <a href="guests.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('guests.html');
-            "
-            >Гости</a
-          >
-        </li>
-      </ul>
-    </nav>
+            ">Гости</a>
+      </li>
+    </ul>
+  </nav>
 
-    <main>
-      <header
-        class="section"
-        style="padding-top: calc(var(--nav-height) + 100px); text-align: center"
-      >
-        <div class="container reveal">
-          <h1>ВСЕ ВЫПУСКИ</h1>
-          <p style="max-width: 600px; margin: 0 auto; font-size: 1.25rem">
-            Смотрите и слушайте полные эпизоды на любые стоматологические темы.
-          </p>
+  <main>
+    <header class="section" style="padding-top: calc(var(--nav-height) + 100px); text-align: center">
+      <div class="container reveal">
+        <h1>ВСЕ ВЫПУСКИ</h1>
+        <p style="max-width: 600px; margin: 0 auto; font-size: 1.25rem">
+          Смотрите и слушайте полные эпизоды на любые стоматологические темы.
+        </p>
+      </div>
+    </header>
+
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <!-- Dynamic Filter Buttons -->
+        <div class="filter-group reveal reveal-up"
+          style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+          <button class="btn btn-outline filter-btn active" data-filter="all">Все</button>
+          <button class="btn btn-outline filter-btn" data-filter="ortho">Ортодонтия</button>
+          <button class="btn btn-outline filter-btn" data-filter="surgery">Хирургия</button>
+          <button class="btn btn-outline filter-btn" data-filter="therapy">Общие темы</button>
         </div>
-      </header>
 
-      <section class="section" style="padding-top: 0">
-        <div class="container">
-          <div class="grid-3" style="gap: 3rem">
-            <!-- Episode Card: Full width for the latest, or standard grid via css layout adaptations -->
-            <div
-              class="card reveal img-hover-zoom"
-              style="padding: 0; overflow: hidden; cursor: pointer"
-              onclick="
+        <div class="grid-3 episode-grid" style="gap: 3rem">
+          <!-- Episode Card: Full width for the latest, or standard grid via css layout adaptations -->
+          <div class="card episode-card reveal img-hover-zoom" data-category="ortho"
+            style="padding: 0; overflow: hidden; cursor: pointer" onclick="
                 event.preventDefault();
                 triggerPageExit('episode-template.html');
-              "
-            >
-              <div
-                style="
+              ">
+            <div style="
                   height: 220px;
                   width: 100%;
                   background: var(--bg-secondary);
                   position: relative;
-                "
-              >
-                <img
-                  src="https://via.placeholder.com/600x400/141414/3b82f6"
-                  alt="Обложка"
-                  style="width: 100%; height: 100%; object-fit: cover"
-                />
-                <div
-                  style="
+                ">
+              <img src="https://via.placeholder.com/600x400/141414/3b82f6" alt="Обложка"
+                style="width: 100%; height: 100%; object-fit: cover" />
+              <div style="
                     position: absolute;
                     bottom: 10px;
                     right: 10px;
@@ -148,66 +126,49 @@
                     border-radius: 4px;
                     font-weight: 600;
                     font-size: 0.8rem;
-                  "
-                >
-                  45:20
-                </div>
-              </div>
-              <div style="padding: 2rem">
-                <span
-                  style="
-                    color: var(--accent-primary);
-                    font-weight: 700;
-                    font-size: 0.85rem;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                  "
-                  >Эпизод 3</span
-                >
-                <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
-                  Почему болят суставы челюсти?
-                </h3>
-                <p style="margin-top: 1rem; margin-bottom: 2rem">
-                  Обсуждаем гнатологию, хруст при открывании рта и роль
-                  ортодонта.
-                </p>
-                <span
-                  class="btn-outline"
-                  style="
-                    padding: 10px 20px;
-                    border-radius: 30px;
-                    border: 1px solid var(--border-light);
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                  "
-                  >Смотреть</span
-                >
+                  ">
+                45:20
               </div>
             </div>
+            <div style="padding: 2rem">
+              <span style="
+                    color: var(--accent-primary);
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                  ">Эпизод 3</span>
+              <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
+                Почему болят суставы челюсти?
+              </h3>
+              <p style="margin-top: 1rem; margin-bottom: 2rem">
+                Обсуждаем гнатологию, хруст при открывании рта и роль
+                ортодонта.
+              </p>
+              <span class="btn-outline" style="
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    border: 1px solid var(--border-light);
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                  ">Смотреть</span>
+            </div>
+          </div>
 
-            <div
-              class="card reveal reveal-delay-1 img-hover-zoom"
-              style="padding: 0; overflow: hidden; cursor: pointer"
-              onclick="
+          <div class="card episode-card reveal reveal-delay-1 img-hover-zoom" data-category="surgery"
+            style="padding: 0; overflow: hidden; cursor: pointer" onclick="
                 event.preventDefault();
                 triggerPageExit('episode-template.html');
-              "
-            >
-              <div
-                style="
+              ">
+            <div style="
                   height: 220px;
                   width: 100%;
                   background: var(--bg-secondary);
                   position: relative;
-                "
-              >
-                <img
-                  src="https://via.placeholder.com/600x400/141414/3b82f6"
-                  alt="Обложка"
-                  style="width: 100%; height: 100%; object-fit: cover"
-                />
-                <div
-                  style="
+                ">
+              <img src="https://via.placeholder.com/600x400/141414/3b82f6" alt="Обложка"
+                style="width: 100%; height: 100%; object-fit: cover" />
+              <div style="
                     position: absolute;
                     bottom: 10px;
                     right: 10px;
@@ -217,66 +178,49 @@
                     border-radius: 4px;
                     font-weight: 600;
                     font-size: 0.8rem;
-                  "
-                >
-                  62:15
-                </div>
-              </div>
-              <div style="padding: 2rem">
-                <span
-                  style="
-                    color: var(--accent-primary);
-                    font-weight: 700;
-                    font-size: 0.85rem;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                  "
-                  >Эпизод 2</span
-                >
-                <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
-                  Мифы об имплантации
-                </h3>
-                <p style="margin-top: 1rem; margin-bottom: 2rem">
-                  Развеиваем страхи: больно ли ставить имплант и как он
-                  приживается.
-                </p>
-                <span
-                  class="btn-outline"
-                  style="
-                    padding: 10px 20px;
-                    border-radius: 30px;
-                    border: 1px solid var(--border-light);
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                  "
-                  >Смотреть</span
-                >
+                  ">
+                62:15
               </div>
             </div>
+            <div style="padding: 2rem">
+              <span style="
+                    color: var(--accent-primary);
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                  ">Эпизод 2</span>
+              <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
+                Мифы об имплантации
+              </h3>
+              <p style="margin-top: 1rem; margin-bottom: 2rem">
+                Развеиваем страхи: больно ли ставить имплант и как он
+                приживается.
+              </p>
+              <span class="btn-outline" style="
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    border: 1px solid var(--border-light);
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                  ">Смотреть</span>
+            </div>
+          </div>
 
-            <div
-              class="card reveal reveal-delay-2 img-hover-zoom"
-              style="padding: 0; overflow: hidden; cursor: pointer"
-              onclick="
+          <div class="card episode-card reveal reveal-delay-2 img-hover-zoom" data-category="therapy"
+            style="padding: 0; overflow: hidden; cursor: pointer" onclick="
                 event.preventDefault();
                 triggerPageExit('episode-template.html');
-              "
-            >
-              <div
-                style="
+              ">
+            <div style="
                   height: 220px;
                   width: 100%;
                   background: var(--bg-secondary);
                   position: relative;
-                "
-              >
-                <img
-                  src="https://via.placeholder.com/600x400/141414/3b82f6"
-                  alt="Обложка"
-                  style="width: 100%; height: 100%; object-fit: cover"
-                />
-                <div
-                  style="
+                ">
+              <img src="https://via.placeholder.com/600x400/141414/3b82f6" alt="Обложка"
+                style="width: 100%; height: 100%; object-fit: cover" />
+              <div style="
                     position: absolute;
                     bottom: 10px;
                     right: 10px;
@@ -286,62 +230,55 @@
                     border-radius: 4px;
                     font-weight: 600;
                     font-size: 0.8rem;
-                  "
-                >
-                  50:40
-                </div>
+                  ">
+                50:40
               </div>
-              <div style="padding: 2rem">
-                <span
-                  style="
+            </div>
+            <div style="padding: 2rem">
+              <span style="
                     color: var(--accent-primary);
                     font-weight: 700;
                     font-size: 0.85rem;
                     letter-spacing: 1px;
                     text-transform: uppercase;
-                  "
-                  >Эпизод 1</span
-                >
-                <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
-                  Знакомство. Кто мы?
-                </h3>
-                <p style="margin-top: 1rem; margin-bottom: 2rem">
-                  Первый выпуск нашего подкаста. Вводим в курс дела, о чем будем
-                  говорить.
-                </p>
-                <span
-                  class="btn-outline"
-                  style="
+                  ">Эпизод 1</span>
+              <h3 style="margin-top: 0.5rem; font-size: 1.5rem">
+                Знакомство. Кто мы?
+              </h3>
+              <p style="margin-top: 1rem; margin-bottom: 2rem">
+                Первый выпуск нашего подкаста. Вводим в курс дела, о чем будем
+                говорить.
+              </p>
+              <span class="btn-outline" style="
                     padding: 10px 20px;
                     border-radius: 30px;
                     border: 1px solid var(--border-light);
                     font-size: 0.9rem;
                     font-weight: 600;
-                  "
-                  >Смотреть</span
-                >
-              </div>
+                  ">Смотреть</span>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <footer>
-      <div class="container">
-        <p
-          style="
+  <footer>
+    <div class="container">
+      <p style="
             color: var(--text-muted);
             font-size: 0.9rem;
             text-align: center;
-          "
-        >
-          &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
-        </p>
-      </div>
-    </footer>
+          ">
+        &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
+      </p>
+    </div>
+  </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
-  </body>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+
 </html>

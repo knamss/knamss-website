@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollReveals();
   initMagneticButtons();
   initParallax();
+  initHorizontalScroll();
+  init3DTilt();
+  initFilters();
 });
 
 /* =========================================================================
@@ -116,4 +119,129 @@ function initParallax() {
   };
 
   animateParallax();
+}
+
+/* =========================================================================
+   HORIZONTAL SCROLL
+   ========================================================================= */
+function initHorizontalScroll() {
+  const container = document.querySelector(".horizontal-scroll-container");
+  const stickyWrapper = document.querySelector(".sticky-wrapper");
+  const track = document.querySelector(".cards-track");
+
+  if (!container || !stickyWrapper || !track) return;
+
+  const setupHeight = () => {
+    // Determine how far we need to scroll horizontally
+    // Add that distance to the vertical viewport height to give scroll space
+    const trackWidth = track.scrollWidth;
+    const scrollableDistance = trackWidth - window.innerWidth + window.innerWidth * 0.1; // Add 10vw padding
+    container.style.height = `${window.innerHeight + scrollableDistance}px`;
+  };
+
+  setupHeight();
+  window.addEventListener("resize", setupHeight);
+
+  // Use Lenis or native scroll event
+  window.addEventListener(
+    "scroll",
+    () => {
+      const rect = container.getBoundingClientRect();
+
+      // When the top of container hits top of viewport, sticky wrapper stays.
+      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+        const maxScroll = container.offsetHeight - window.innerHeight;
+        const currentScroll = -rect.top;
+        const progress = currentScroll / maxScroll;
+
+        const trackWidth = track.scrollWidth;
+        const moveDistance = trackWidth - window.innerWidth + window.innerWidth * 0.1;
+
+        track.style.transform = `translate3d(${-moveDistance * progress}px, 0, 0)`;
+      } else if (rect.top > 0) {
+        track.style.transform = `translate3d(0, 0, 0)`;
+      } else {
+        const moveDistance = track.scrollWidth - window.innerWidth + window.innerWidth * 0.1;
+        track.style.transform = `translate3d(${-moveDistance}px, 0, 0)`;
+      }
+    },
+    { passive: true },
+  );
+}
+
+/* =========================================================================
+   3D CARD TILT
+   ========================================================================= */
+function init3DTilt() {
+  const tiltCards = document.querySelectorAll(".tilt-card");
+
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+
+  tiltCards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left; // x position within the element
+      const y = e.clientY - rect.top; // y position within the element
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Max rotation 15 degrees
+      const rotateX = ((y - centerY) / centerY) * -15;
+      const rotateY = ((x - centerX) / centerX) * 15;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      card.style.transition = "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)";
+      setTimeout(() => {
+        card.style.transition = "";
+      }, 500);
+    });
+  });
+}
+
+/* =========================================================================
+   DYNAMIC FILTERING (Episodes/Guests)
+   ========================================================================= */
+function initFilters() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const items = document.querySelectorAll(".episode-card, .guest-card");
+
+  if (filterBtns.length === 0 || items.length === 0) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Remove active class from all
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      // Add active to clicked
+      btn.classList.add("active");
+
+      const filterValue = btn.getAttribute("data-filter");
+
+      items.forEach((item) => {
+        const category = item.getAttribute("data-category");
+
+        // Scale down animation
+        item.style.transition = "transform 0.4s ease, opacity 0.4s ease";
+        item.style.transform = "scale(0.8)";
+        item.style.opacity = "0";
+
+        setTimeout(() => {
+          if (filterValue === "all" || category === filterValue) {
+            item.style.display = "flex"; // or block depending on original display
+            // For cards from our grid, it's flex from .card class
+            setTimeout(() => {
+              item.style.transform = "scale(1)";
+              item.style.opacity = "1";
+            }, 50);
+          } else {
+            item.style.display = "none";
+          }
+        }, 400);
+      });
+    });
+  });
 }

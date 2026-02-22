@@ -3,10 +3,49 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+  initPreloader();
+  initLenis();
   initCustomCursor();
   initMobileMenu();
   initNavbarScroll();
 });
+
+/* =========================================================================
+   PRELOADER & SMOOTH SCROLL (LENIS)
+   ========================================================================= */
+function initPreloader() {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    // Add a slight delay so user can see it briefly, then fade out
+    setTimeout(() => {
+      preloader.classList.add("hidden");
+      // Remove it from flow after transition
+      setTimeout(() => preloader.style.display = "none", 800);
+    }, 600);
+  }
+}
+
+function initLenis() {
+  if (typeof Lenis !== "undefined") {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }
+}
 
 /* =========================================================================
    CUSTOM CURSOR LOGIC
@@ -48,15 +87,28 @@ function initCustomCursor() {
 
   // Hover effect on interactive elements
   const interactives = document.querySelectorAll(
-    "a, button, input, textarea, .magnetic-wrap",
+    "a, button, input, textarea, .magnetic-wrap, .video-card",
   );
 
   interactives.forEach((el) => {
     el.addEventListener("mouseenter", () => {
       document.body.classList.add("cursor-hover");
+      cursorOutline.classList.add("hover");
+      cursorDot.classList.add("hover");
+
+      const hoverText = el.getAttribute("data-cursor-text");
+      if (hoverText) {
+        cursorOutline.setAttribute("data-cursor-text", hoverText);
+        cursorOutline.classList.add("has-text");
+      }
     });
+
     el.addEventListener("mouseleave", () => {
       document.body.classList.remove("cursor-hover");
+      cursorOutline.classList.remove("hover");
+      cursorDot.classList.remove("hover");
+      cursorOutline.classList.remove("has-text");
+      cursorOutline.removeAttribute("data-cursor-text");
     });
   });
 }

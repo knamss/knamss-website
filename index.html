@@ -1,137 +1,105 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>К.Н.А.М.С.С. | Подкаст стоматологов без тайн</title>
-    <meta
-      name="description"
-      content="Подкаст стоматологов без тайн: экспертно, доступно и честно. Анастасия Маркова, София Сапрыкина, Константин Наам обсуждают стоматологию с интересными гостями."
-    />
-    <meta
-      name="keywords"
-      content="стоматология, подкаст, ортодонт, хирург-имплантолог, стоматолог-терапевт, лечение зубов, брекеты, имплантация зубов"
-    />
 
-    <!-- Open Graph for SEO -->
-    <meta
-      property="og:title"
-      content="К.Н.А.М.С.С. | Подкаст стоматологов без тайн"
-    />
-    <meta
-      property="og:description"
-      content="Подкаст стоматологов без тайн: экспертно, доступно и честно."
-    />
-    <meta property="og:type" content="website" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>К.Н.А.М.С.С. | Подкаст стоматологов без тайн</title>
+  <meta name="description"
+    content="Подкаст стоматологов без тайн: экспертно, доступно и честно. Анастасия Маркова, София Сапрыкина, Константин Наам обсуждают стоматологию с интересными гостями." />
+  <meta name="keywords"
+    content="стоматология, подкаст, ортодонт, хирург-имплантолог, стоматолог-терапевт, лечение зубов, брекеты, имплантация зубов" />
 
-    <!-- Modern Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Open Graph for SEO -->
+  <meta property="og:title" content="К.Н.А.М.С.С. | Подкаст стоматологов без тайн" />
+  <meta property="og:description" content="Подкаст стоматологов без тайн: экспертно, доступно и честно." />
+  <meta property="og:type" content="website" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/animations.css" />
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="images/favicon.jpg" />
-  </head>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 
-  <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg" />
+</head>
 
-    <!-- Page Transition -->
-    <div class="page-transition"></div>
+<body>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <img src="images/favicon.jpg" alt="Loading..." class="preloader-logo">
+      <div class="preloader-bar"></div>
+    </div>
+  </div>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="logo">
-        <a
-          href="index.html"
-          onclick="
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html" onclick="
             event.preventDefault();
             triggerPageExit('index.html');
-          "
-          style="display: flex; align-items: center; height: 100%"
-        >
-          <img
-            src="images/logo-dark.jpg"
-            alt="К.Н.А.М.С.С."
-            style="
+          " style="display: flex; align-items: center; height: 100%">
+        <img src="images/logo-dark.jpg" alt="К.Н.А.М.С.С." style="
               height: 45px;
               width: auto;
               max-height: 100%;
               border-radius: 5px;
-            "
-          />
-        </a>
-      </div>
+            " />
+      </a>
+    </div>
 
-      <button class="menu-toggle" aria-label="Toggle Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-      <ul class="nav-links">
-        <li>
-          <a
-            href="index.html"
-            class="nav-link active"
-            onclick="
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-link active" onclick="
               event.preventDefault();
               triggerPageExit('index.html');
-            "
-            >Главная</a
-          >
-        </li>
-        <li>
-          <a
-            href="about.html"
-            class="nav-link"
-            onclick="
+            ">Главная</a>
+      </li>
+      <li>
+        <a href="about.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('about.html');
-            "
-            >О нас</a
-          >
-        </li>
-        <li>
-          <a
-            href="episodes.html"
-            class="nav-link"
-            onclick="
+            ">О нас</a>
+      </li>
+      <li>
+        <a href="episodes.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('episodes.html');
-            "
-            >Выпуски</a
-          >
-        </li>
-        <li>
-          <a
-            href="guests.html"
-            class="nav-link"
-            onclick="
+            ">Выпуски</a>
+      </li>
+      <li>
+        <a href="guests.html" class="nav-link" onclick="
               event.preventDefault();
               triggerPageExit('guests.html');
-            "
-            >Гости</a
-          >
-        </li>
-      </ul>
-    </nav>
+            ">Гости</a>
+      </li>
+    </ul>
+  </nav>
 
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <header
-        class="hero-section"
-        style="
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <header class="hero-section" style="
           min-height: 100vh;
           display: flex;
           flex-direction: column;
@@ -141,60 +109,82 @@
           position: relative;
           overflow: hidden;
           padding-top: var(--nav-height);
-        "
-      >
-        <!-- Ambient Shape Backgrounds for Parallax -->
-        <div class="bg-shape shape-1 parallax-mouse" data-speed="-15"></div>
-        <div class="bg-shape shape-2 parallax-mouse" data-speed="25"></div>
+        ">
+      <!-- Ambient Shape Backgrounds for Parallax -->
+      <div class="bg-shape shape-1 parallax-mouse" data-speed="-15"></div>
+      <div class="bg-shape shape-2 parallax-mouse" data-speed="25"></div>
 
-        <div class="container relative z-10 reveal">
-          <h1
-            style="
-              font-size: clamp(4rem, 10vw, 8rem);
-              margin-bottom: 1rem;
-              line-height: 1;
-              font-weight: 800;
-              background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-            "
-          >
-            ПОДКАСТ<br />БЕЗ ТАЙН
-          </h1>
-          <p
-            style="
-              font-size: clamp(1.1rem, 2vw, 1.5rem);
-              max-width: 600px;
-              margin: 0 auto 3rem;
-              color: var(--text-secondary);
-            "
-            class="reveal reveal-delay-1"
-          >
-            Разбираем сложные темы простым языком, зовем крутых экспертов и
-            смело обсуждаем то, о чем пациенты стесняются спросить.
-          </p>
+      <div class="container relative z-10 hero-content reveal reveal-up">
+        <h1 class="hero-title masked">ПОДКАСТ<br />БЕЗ ТАЙН</h1>
+        <p class="hero-subtitle reveal reveal-up reveal-delay-1">
+          Разбираем сложные темы простым языком, зовем крутых экспертов и смело
+          обсуждаем то, о чем пациенты стесняются спросить.
+        </p>
+        <div class="magnetic-wrap reveal reveal-up reveal-delay-2">
+          <a href="episodes.html" class="btn btn-primary" data-cursor-text="Смотреть">Смотреть новый выпуск</a>
+        </div>
+      </div>
+    </header>
 
-          <div class="magnetic-wrap reveal reveal-delay-2">
-            <a
-              href="#latest"
-              class="btn btn-primary"
-              style="font-size: 1.25rem; padding: 1.25rem 3rem"
-              >Смотреть новый выпуск</a
-            >
+    <!-- HORIZONTAL SCROLL GALLERY -->
+    <section class="horizontal-scroll-container">
+      <div class="sticky-wrapper">
+        <div class="horizontal-scroll-content">
+          <h2 class="section-title hz-title">ЛУЧШИЕ ВЫПУСКИ</h2>
+          <div class="cards-track">
+            <!-- Card 1 -->
+            <div class="hz-card img-hover-zoom">
+              <img src="images/logo-dark.jpg" alt="Episode 1">
+              <div class="hz-card-content">
+                <h3>Всё о винирах</h3>
+                <p>Как не ошибиться при выборе.</p>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="hz-card img-hover-zoom">
+              <img src="images/favicon.jpg" alt="Episode 2">
+              <div class="hz-card-content">
+                <h3>Детская стоматология</h3>
+                <p>Главные страхи родителей.</p>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="hz-card img-hover-zoom">
+              <img src="images/logo.jpg" alt="Episode 3">
+              <div class="hz-card-content">
+                <h3>Современная хирургия</h3>
+                <p>Импланты без боли.</p>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="hz-card img-hover-zoom">
+              <img src="images/markova.jpg" alt="Episode 4">
+              <div class="hz-card-content">
+                <h3>Правильный прикус</h3>
+                <p>Зачем это нужно во взрослом возрасте.</p>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="hz-card img-hover-zoom">
+              <img src="images/naam.jpg" alt="Episode 5">
+              <div class="hz-card-content">
+                <h3>Секреты пародонтологии</h3>
+                <p>Спасаем десны вместе.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </header>
+      </div>
+    </section>
 
-      <!-- Latest Episode Section -->
-      <section id="latest" class="section">
-        <div class="container reveal">
-          <h2 style="text-align: center; margin-bottom: 3rem">
-            Последний выпуск
-          </h2>
+    <!-- Latest Episode Section -->
+    <section id="latest" class="section">
+      <div class="container reveal">
+        <h2 style="text-align: center; margin-bottom: 3rem">
+          Последний выпуск
+        </h2>
 
-          <div
-            class="video-container"
-            style="
+        <div class="video-container" style="
               position: relative;
               padding-bottom: 56.25%;
               height: 0;
@@ -203,100 +193,57 @@
               box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
               border: 1px solid var(--border-light);
               background: #000;
-            "
-          >
-            <iframe
-              style="
+            ">
+          <iframe style="
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
                 border: none;
-              "
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="КНАМСС Последний выпуск"
-              allow="
+              " src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="КНАМСС Последний выпуск" allow="
                 accelerometer;
                 autoplay;
                 clipboard-write;
                 encrypted-media;
                 gyroscope;
                 picture-in-picture;
-              "
-              allowfullscreen
-            ></iframe>
-          </div>
+              " allowfullscreen></iframe>
+        </div>
 
-          <div
-            style="text-align: center; margin-top: 3rem"
-            class="magnetic-wrap reveal reveal-delay-1"
-          >
-            <a
-              href="episodes.html"
-              class="btn btn-outline"
-              onclick="
+        <div style="text-align: center; margin-top: 3rem" class="magnetic-wrap reveal reveal-delay-1">
+          <a href="episodes.html" class="btn btn-outline" onclick="
                 event.preventDefault();
                 triggerPageExit('episodes.html');
-              "
-              >Все выпуски</a
-            >
-          </div>
+              ">Все выпуски</a>
         </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container reveal">
-        <h2 style="font-size: 2rem; margin-bottom: 2rem">
-          Смотрите и слушайте нас:
-        </h2>
-        <div class="social-links magnetic-wrap">
-          <a
-            href="https://www.youtube.com/@knamss"
-            class="social-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            >YT</a
-          >
-          <a
-            href="#"
-            class="social-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            >ВК</a
-          >
-          <a
-            href="#"
-            class="social-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Дз</a
-          >
-          <a
-            href="#"
-            class="social-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            >RT</a
-          >
-          <a
-            href="#"
-            class="social-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            >ЯМ</a
-          >
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.9rem">
-          &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
-        </p>
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
-  </body>
+  <!-- Footer -->
+  <footer>
+    <div class="container reveal">
+      <h2 style="font-size: 2rem; margin-bottom: 2rem">
+        Смотрите и слушайте нас:
+      </h2>
+      <div class="social-links magnetic-wrap">
+        <a href="https://www.youtube.com/@knamss" class="social-link" target="_blank" rel="noopener noreferrer">YT</a>
+        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">ВК</a>
+        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">Дз</a>
+        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">RT</a>
+        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">ЯМ</a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.9rem">
+        &copy; 2026 Подкаст К.Н.А.М.С.С. Все права защищены.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+
 </html>
