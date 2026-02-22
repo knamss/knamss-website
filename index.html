@@ -6,38 +6,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>К.Н.А.М.С.С. | Подкаст стоматологов без тайн</title>
     <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --accent-color: #0284c7;
+            --accent-hover: #0369a1;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+        }
+
         body {
-            font-family: sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
 
         header {
             text-align: center;
-            padding: 50px 0;
-            background: #f4f4f4;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0 0 15px 0;
+            color: #0f172a;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #475569;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #0f172a;
+        }
+
+        .latest-episode {
+            margin-bottom: 80px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .experts {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
-            margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .card {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            width: 250px;
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            width: calc(33.333% - 20px);
+            min-width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .photo-placeholder {
+            width: 120px;
+            height: 120px;
+            background-color: #f1f5f9;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        .card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: #0f172a;
+        }
+
+        .card p {
+            margin: 0;
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        .socials-section {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 60px 20px;
             text-align: center;
         }
 
-        .socials {
-            margin-top: 50px;
-            text-align: center;
+        .socials-section h3 {
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .experts {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
         }
     </style>
 </head>
@@ -48,26 +193,47 @@
         <p>Подкаст стоматологов без тайн: экспертно, доступно и честно.</p>
     </header>
 
-    <main>
-        <section class="experts">
-            <div class="card">
-                <h3>Анастасия Маркова</h3>
-                <p>Стоматолог-ортодонт</p>
+    <main class="container">
+        <section class="latest-episode">
+            <h2 class="section-title">Последний выпуск</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
-            <div class="card">
-                <h3>София Сапрыкина</h3>
-                <p>Хирург, пародонтолог</p>
-            </div>
-            <div class="card">
-                <h3>Константин Наам</h3>
-                <p>Стоматолог-хирург</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Ведущие</h2>
+            <div class="experts">
+                <div class="card">
+                    <div class="photo-placeholder">Фото</div>
+                    <h3>Анастасия Маркова</h3>
+                    <p>Стоматолог-ортодонт</p>
+                </div>
+                <div class="card">
+                    <div class="photo-placeholder">Фото</div>
+                    <h3>София Сапрыкина</h3>
+                    <p>Хирург, пародонтолог</p>
+                </div>
+                <div class="card">
+                    <div class="photo-placeholder">Фото</div>
+                    <h3>Константин Наам</h3>
+                    <p>Стоматолог-хирург</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="socials">
+    <footer class="socials-section">
         <h3>Смотрите нас здесь:</h3>
-        <a href="https://www.youtube.com/@knamss">YouTube</a> | ВК | Дзен | RuTube
+        <div class="social-links">
+            <a href="https://www.youtube.com/@knamss" class="social-btn" target="_blank"
+                rel="noopener noreferrer">YouTube</a>
+            <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer">ВК</a>
+            <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer">Дзен</a>
+            <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer">RuTube</a>
+        </div>
     </footer>
 </body>
 
